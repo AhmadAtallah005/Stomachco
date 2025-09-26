@@ -5,16 +5,16 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" >
 <h1 style="color:#FF7D00 ;margin:30px">RolesList</h1>
-<table class="table table-bordered ">
+<table class="table table-bordered " style="margin:30px;width:70%;">
     <tr>
         <td>@Html.DisplayNameFor(m => m.Name)</td>
-        <td>Operation</td>
+        <td style="padding-left:10px">Operation</td>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
             <td>@item.Name</td>
-            <td>
+            <td style="padding-left:10px">
                 <a asp-action="EditRole" class="btn btn-warning" asp-route-id="@item.Id">EditRole</a>
                 <a asp-action="DeleteRole" class="btn btn-danger" asp-route-id="@item.Id">DeleteRole</a>
 
