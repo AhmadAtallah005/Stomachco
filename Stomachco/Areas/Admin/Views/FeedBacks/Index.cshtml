@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<Stomachco.Models.FeedBack>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Feedback";
 }
 
-<h1>Index</h1>
+<h1>FeedBacks</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -21,7 +19,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Message)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -36,11 +33,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Message)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+           
         </tr>
 }
     </tbody>
