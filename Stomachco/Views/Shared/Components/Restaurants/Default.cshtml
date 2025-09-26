@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Restaurant>
+
+
+
+<div class="rest" id="rest">
+	<div class="container">
+		<div class="restlogo">
+			<p>All Restaurants</p>
+		</div>
+
+		<div class="row">
+
+			@foreach (var item in Model)
+			{
+				
+			<div class="package">
+					<a asp-action="view1" asp-controller="Home" class="comp">
+						<img width="100" height="100" src="@Url.Content(item.RestImage)" alt="Restaurant Photo" />
+					<div class="description">
+						<p class="restname">@item.RestName</p>
+						<p class="restinfo">@item.RestDesciption</p>
+					</div>
+				</a>
+			</div>
+			}
+
+			
+		</div>
+	</div>
+</div>

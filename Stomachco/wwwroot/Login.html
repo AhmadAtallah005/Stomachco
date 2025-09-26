@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/Login.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Share+Tech&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Stomachco</title>
+  </head>
+
+  <body>
+    <div class="login">
+      <div class="contant">
+        <div class="image">
+          <img src="images/Logo.png" alt="" />
+        </div>
+        <h1 style="margin: -5px auto 25px">Log in to Stomachco !</h1>
+        <form action="Login.php" method="post">
+          <div class="user">
+            <label for="">Username Or Email</label>
+            <input
+              type="text"
+              required
+              name="username"
+              placeholder="Username Or Email"
+            />
+          </div>
+          <div class="password">
+            <label class="passlabel" for="">Password</label>
+            <input
+              type="password"
+              required
+              minlength="8"
+              name="pass"
+              id="passlabel"
+              placeholder="Password"
+            />
+            <i
+              class="fas fa-eye toggle-password"
+              onclick="togglePassword()"
+              id="eyeIcon"
+            ></i>
+          </div>
+          <div class="register">
+            <h3 class="reg">Don't have an account ?</h3>
+            <a href="Signin.html"> Sign up for Stomachco .</a>
+          </div>
+          <input class="submit" type="submit" value="Sign in" />
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function togglePassword() {
+        const passwordField = document.getElementById("passlabel");
+        const eyeIcon = document.getElementById("eyeIcon");
+
+        if (passwordField.type === "password") {
+          passwordField.type = "text";
+          eyeIcon.classList.remove("fa-eye");
+          eyeIcon.classList.add("fa-eye-slash");
+        } else {
+          passwordField.type = "password";
+          eyeIcon.classList.remove("fa-eye-slash");
+          eyeIcon.classList.add("fa-eye");
+        }
+      }
+    </script>
+  </body>
+</html>

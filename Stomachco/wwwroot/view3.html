@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Page</title>
+    <link rel="stylesheet" href="css/view.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="image">
+          <img
+            class="m1"
+            src="images/Logo.png"
+            alt="logo"
+          />
+          <p>jordan</p>
+
+          <img class="m2" src="images/jordan.jpg" alt="jordan logo" />
+        </div>
+        <ul>
+          <li><a href="#rest">Food</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="landing">
+      <div class="container">
+        <p>Deliviery Over The World !</p>
+        <i class="fa-solid fa-motorcycle fa-4x"></i>
+      </div>
+    </div>
+    <form action="view3.php" method="post">
+      <div class="menu" id="rest">
+        <div class="container">
+          <h1 class="head_m">OUR FOOD MENU</h1>
+          <div class="row">
+            <div class="card">
+              <div class="image">
+                <img src="images/market/rice.png" alt="" />
+              </div>
+              <div class="description">
+                <h3>rice</h3>
+                <span class="price">4.00$</span>
+              </div>
+              <input
+                class="number"
+                type="number"
+                required
+                value="0"
+                min="0"
+                max="5"
+                name="rice"
+              />
+            </div>
+            <div class="card">
+              <div class="image">
+                <img src="images/market/ملح.png" alt="" />
+              </div>
+              <div class="description">
+                <h3>Salt</h3>
+                
+                <span class="price">0.50$</span>
+              </div>
+              <input
+                class="number"
+                type="number"
+                required
+                value="0"
+                min="0"
+                max="5"
+                name="salt"
+              />
+            </div>
+            <div class="card">
+              <div class="image">
+                <img src="images/market/floor.png" alt="" />
+              </div>
+              <div class="description">
+                <h3>Flour</h3>
+               
+                <span class="price">3.00$</span>
+              </div>
+              <input
+                class="number"
+                type="number"
+                required
+                value="0"
+                min="0"
+                max="5"
+                name="flour"
+              />
+            </div>
+            <div class="card">
+              <div class="image">
+                <img src="images/market/sugar2.jpg" alt="" />
+              </div>
+              <div class="description">
+                <h3>Sugar</h3>
+               
+                <span class="price">1.00$</span>
+              </div>
+              <input
+                class="number"
+                type="number"
+                required
+                value="0"
+                min="0"
+                max="5"
+                name="sugar"
+              />
+            </div>
+            <div class="card">
+              <div class="image">
+                <img src="images/market/oil.jpg" alt="" />
+              </div>
+              <div class="description">
+                <h3>Oil</h3>
+                
+                <span class="price">2.50$</span>
+              </div>
+              <input
+                class="number"
+                type="number"
+                required
+                value="0"
+                min="0"
+                max="5"
+                name="oil"
+              />
+            </div>
+           
+          <input class="submit" type="submit" value="Order" />
+          <i
+            style="
+              font-size: 20px;
+              color: white;
+              position: absolute;
+              left: 52%;
+              bottom: -40px;
+            "
+            class="fa-solid fa-cart-shopping"
+          ></i>
+        </div>
+      </div>
+    </form>
+</div>
+    <div class="contact" id="contact">
+      <div class="container">
+        <h2 class="special-heading">Contact Us</h2>
+
+        <div class="info">
+          <p class="lapel">You can contact us at:</p>
+          <a href="mailto:atallah.ahmad7@gmail.com">atallah.ahmad7@gmail.com</a>
+          <div class="social">
+            Find Us On Social Networks
+            <a
+              href="https://www.facebook.com/share/15cqd9ebAA/?mibextid=wwXIfr"
+              target="_blank"
+              ><i class="fa-brands fa-facebook facebook"></i
+            ></a>
+            <a href="https://x.com/ahmadatallah19?s=21" target="_blank"
+              ><i class="fa-brands fa-twitter"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/ahmad-atallah-687a66341?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+              target="_blank"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+            <a href="mailto:atallah.ahmad7@gmail.com" target="_blank"
+              ><i class="fa-solid fa-envelope"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+﻿@model Stomachco.Models.ViewModel.CreateRoleViewModel
+
+@{
+    ViewData["Title"] = "CreateRole";
+}
+
+<h1>CreateRole</h1>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" >
+
+<hr />
+<div class="row">
+    <div class="col-md-4 ">
+        <form asp-action="CreateRole">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group m-3">
+                <label asp-for="RoleName" class="control-label"></label>
+                <input asp-for="RoleName" class="form-control" />
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+            <div class="form-group m-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="RolesList" class="btn btn-warning">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="m-3">
+    <a asp-action="RolesList" asp-controller="Account" class="btn btn-warning">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

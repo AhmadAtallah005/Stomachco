@@ -1,0 +1,61 @@
+﻿@model Stomachco.Models.ViewModel.CoffeeViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Coffee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CoffeeId" />
+            <div class="form-group">
+                <label asp-for="CofeName" class="control-label"></label>
+                <input asp-for="CofeName" class="form-control" />
+                <span asp-validation-for="CofeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CofeDescription" class="control-label"></label>
+                <textarea asp-for="CofeDescription" class="form-control"></textarea>
+                <span asp-validation-for="CofeDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoffeeImage" class="control-label"></label>
+                <input asp-for="CoffeeImage" class="form-control" />
+                <span asp-validation-for="CoffeeImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreationDate" class="control-label"></label>
+                <input asp-for="CreationDate" class="form-control" />
+                <span asp-validation-for="CreationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="isPublished" /> @Html.DisplayNameFor(model => model.isPublished)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="isDeleted" /> @Html.DisplayNameFor(model => model.isDeleted)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary m-2" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-warning m-2">Back to List</a>
+</div>
+

@@ -1,0 +1,112 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stomachco.com</title>
+    <link rel="stylesheet" href="~/css/stomach.css" />
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap"
+          rel="stylesheet" />
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="image">
+                <img class="m1" src="~/images/Logo.png" alt="logo" />
+                <a href="updateh.php" style="text-decoration: none"> </a>
+                @if (User.IsInRole("Admin"))
+                {
+                    <img class="m2" src="~/images/Ahmad/WhatsApp Image 2025-03-14 at 14.48.27_51724a6e.jpg" alt="jordan logo" />
+
+                }
+                else
+                {
+                    <img class="m2" src="~/images/jordan.jpg" alt="jordan logo" />
+                }
+            </div>
+            <ul>
+               
+
+                @if (signInManager.IsSignedIn(User))
+                {
+
+                @if (User.IsInRole("Admin"))
+                {
+                        <li><a asp-action="Index" asp-controller="DashBoard" asp-area="Admin">DashBoard</a></li>
+                        <li><a asp-action="RolesList" asp-controller="Account" >Roles List</a></li>
+                        <li><a asp-action="Logout" asp-controller="Account">Logout</a></li>
+                }
+
+
+                else 
+                {
+                <li><a href="#contact">Contact Us</a></li>
+                    <li><a asp-action="Logout" asp-controller="Account">Logout</a></li>
+                
+                }
+
+
+
+
+                }
+
+
+
+            </ul>
+        </div>
+    </header>
+
+    <div >
+        @RenderBody()
+    </div>
+   
+
+    <div class="contact" id="contact">
+        <div class="container">
+            <h2 class="special-heading">Contact Us</h2>
+
+            <div class="info"> 
+                <p class="lapel">You can contact us at:</p>
+                <a href="mailto:atallah.ahmad7@gmail.com">atallah.ahmad7@gmail.com</a>
+                <div class="social">
+                    Find Us On Social Networks
+                    <a href="https://www.facebook.com/share/15cqd9ebAA/?mibextid=wwXIfr"
+                       target="_blank">
+                        <i class="fa-brands fa-facebook facebook"></i>
+                    </a>
+                    <a href="https://x.com/ahmadatallah19?s=21" target="_blank">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ahmad-atallah-687a66341?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                       target="_blank">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:atallah.ahmad7@gmail.com" target="_blank">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <a class="comment" asp-action="FeedBack" asp-controller="Account">FeedBack
+                    <i style="margin:7px" class="fa-solid fa-comment"></i>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

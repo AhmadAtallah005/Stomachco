@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Page</title>
+    <link rel="stylesheet" href="css/view.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="image">
+          <img
+            class="m1"
+            src="images/Logo.png"
+            alt="logo"
+          />
+          <p>jordan</p>
+
+          <img class="m2" src="images/jordan.jpg" alt="jordan logo" />
+        </div>
+        <ul>
+          <li><a href="#rest">Food</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="landing">
+      <div class="container">
+        <p>Deliviery Over The World !</p>
+        <i class="fa-solid fa-motorcycle fa-4x"></i>
+      </div>
+    </div>
+    <form action="view.php" method="post">
+      <div class="menu" id="rest">
+        <div class="container">
+          <h1 class="head_m">OUR FOOD MENU</h1>
+          <div class="row">
+            <div class="card">
+              <div class="image">
+                <img src="images/food/pizza2.avif" alt="" />
+              </div>
+              <div class="description">
+                <h3>Pizza</h3>
+                <p>Cheesy and delicious Italian pizza.</p>
+                <span class="price">8.99$</span>
+              </div>
+              <input
+                class="number"
+                type="number"
+                required
+                value="0"
+                min="0"
+                max="5"
+                name="pizza"
+              />
+            </div>
+            <div class="card">
+              <div class="image">
+                <img src="images/food/burger.avif" alt="" />
+              </div>
+              <div class="description">
+                <h3>Burger</h3>
+                <p>Juicy beef burger with fries.</p>
+                <span class="price">6.50$</span>
+              </div>
+              <input
+                class="number"
+                type="number"
+                required
+                value="0"
+                min="0"
+                max="5"
+                name="burger"
+              />
+            </div>
+            <div class="card">
+              <div class="image">
+                <img src="images/food/shawarma.webp" alt="" />
+              </div>
+              <div class="description">
+                <h3>Shawarma</h3>
+                <p>Chicken shawarma with garlic sauce.</p>
+                <span class="price">4.99$</span>
+              </div>
+              <input
+                class="number"
+                type="number"
+                required
+                value="0"
+                min="0"
+                max="5"
+                name="shawarma"
+              />
+            </div>
+            <div class="card">
+              <div class="image">
+                <img src="images/food/ceasersalad.avif" alt="" />
+              </div>
+              <div class="description">
+                <h3>Cesar Salad</h3>
+                <p>Romaine lettuce, croutons, parmesan & Caesar dressing.</p>
+                <span class="price">4.99$</span>
+              </div>
+              <input
+                class="number"
+                type="number"
+                required
+                value="0"
+                min="0"
+                max="5"
+                name="cesar"
+              />
+            </div>
+            <div class="card">
+              <div class="image">
+                <img
+                  src="images/food/Screenshot 2025-05-14 005658.png"
+                  alt=""
+                />
+              </div>
+              <div class="description">
+                <h3>Mansaf</h3>
+                <p>Traditional Jordanian lamb dish with jameed sauce.</p>
+                <span class="price">10.99$</span>
+              </div>
+              <input
+                class="number"
+                type="number"
+                required
+                value="0"
+                min="0"
+                max="5"
+                name="mansaf"
+              />
+            </div>
+            <div class="card">
+              <div class="image">
+                <img
+                  src="images/food/Screenshot 2025-05-14 005635.png"
+                  alt=""
+                />
+              </div>
+              <div class="description">
+                <h3>Kunafa</h3>
+                <p>Sweet cheese pastry soaked in syrup.</p>
+                <span class="price">3.50$</span>
+              </div>
+              <input
+                class="number"
+                type="number"
+                required
+                value="0"
+                min="0"
+                max="5"
+                name="kunafa"
+              />
+            </div>
+          </div>
+          <input class="submit" type="submit" value=" Cart" />
+          <i
+            style="
+              font-size: 20px;
+              color: white;
+              position: absolute;
+              left: 52%;
+              bottom: -40px;
+            "
+            class="fa-solid fa-cart-shopping"
+          ></i>
+        </div>
+      </div>
+    </form>
+
+    <div class="contact" id="contact">
+      <div class="container">
+        <h2 class="special-heading">Contact Us</h2>
+
+        <div class="info">
+          <p class="lapel">You can contact us at:</p>
+          <a href="mailto:atallah.ahmad7@gmail.com">atallah.ahmad7@gmail.com</a>
+          <div class="social">
+            Find Us On Social Networks
+            <a
+              href="https://www.facebook.com/share/15cqd9ebAA/?mibextid=wwXIfr"
+              target="_blank"
+              ><i class="fa-brands fa-facebook facebook"></i
+            ></a>
+            <a href="https://x.com/ahmadatallah19?s=21" target="_blank"
+              ><i class="fa-brands fa-twitter"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/ahmad-atallah-687a66341?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+              target="_blank"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+            <a href="mailto:atallah.ahmad7@gmail.com" target="_blank"
+              ><i class="fa-solid fa-envelope"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

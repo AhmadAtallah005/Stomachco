@@ -1,0 +1,45 @@
+﻿<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<div id="map" style="height:260px;border-radius:8px"></div>
+<input type="hidden" id="lat" name="lat" />
+<input type="hidden" id="lng" name="lng" />
+<button id="saveBtn">حفظ الموقع</button>
+
+<script>
+    // init map (مثال مركز على عمان)
+    var map = L.map('map').setView([31.9454, 35.9284], 12);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+    }).addTo(map);
+
+    // علامة قابلة للسحب
+    var marker = L.marker([31.9454, 35.9284], {draggable:true}).addTo(map);
+
+    // لو المستخدم يضغط على الخريطة نحط العلامة هناك
+    map.on('click', function(e){
+      marker.setLatLng(e.latlng);
+      document.getElementById('lat').value = e.latlng.lat;
+      document.getElementById('lng').value = e.latlng.lng;
+    });
+
+    marker.on('moveend', function(e){
+      var pos = e.target.getLatLng();
+      document.getElementById('lat').value = pos.lat;
+      document.getElementById('lng').value = pos.lng;
+    });
+
+    // إرسال الإحداثيات للباك إند
+    document.getElementById('saveBtn').addEventListener('click', async () => {
+      const lat = document.getElementById('lat').value || marker.getLatLng().lat;
+      const lng = document.getElementById('lng').value || marker.getLatLng().lng;
+      const resp = await fetch('/api/location/save', {
+        method: 'POST',
+        headers: { 'Content-Type':'application/json' },
+        body: JSON.stringify({ latitude: lat, longitude: lng })
+      });
+      const data = await resp.json();
+      alert(data.success ? 'تم الحفظ' : ('فشل: '+ (data.message || 'خطأ')));
+    });
+</script>

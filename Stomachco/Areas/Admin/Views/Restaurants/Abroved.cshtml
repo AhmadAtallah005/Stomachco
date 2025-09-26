@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Stomachco.Models.Restaurant>
+
+@{
+    ViewData["Title"] = "Abroved";
+}
+
+<h1>Abroved</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RestName)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.RestImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isPublished)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isDeleted)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RestName)
+            </td>
+           
+            <td>
+                    <img width="100" height="100" src="@Url.Content(item.RestImage)" alt="Restaurant Photo" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isPublished)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isDeleted)
+            </td>
+            <td>
+
+                    <a asp-action="Published" asp-route-id="@item.RestaurantId" class="btn btn-warning">Published</a>			
+                    <a asp-action="Index" class="btn btn-danger">Return To List</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

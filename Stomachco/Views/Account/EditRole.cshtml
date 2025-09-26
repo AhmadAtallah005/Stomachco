@@ -1,0 +1,46 @@
+﻿@model Stomachco.Models.ViewModel.EditRoleViewModel
+
+@{
+    ViewData["Title"] = "EditRole";
+}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" >
+<h1>EditRole</h1>
+
+<hr />
+<div class="row m-5">
+    <div class="col-md-4">
+        <form asp-action="EditRole">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RoleID" class="control-label"></label>
+                <input asp-for="RoleID" class="form-control" />
+                <span asp-validation-for="RoleID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoleName" class="control-label"></label>
+                <input asp-for="RoleName" class="form-control" />
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="RolesList" asp-controller="Account" class="btn btn-warning">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card m-5">
+    <div class="card-header">Users In The Role</div>
+    <div class="card-body">
+        @foreach (var user in Model.Users)
+        {
+            @user <br />
+        }
+    </div>
+         <div class="card-footer">
+        <a asp-action="ModifyUsersInRole" asp-controller="Account" asp-route-id="@Model.RoleID" class="btn btn-warning">Add/Remove</a>
+    </div>
+
+</div>
+

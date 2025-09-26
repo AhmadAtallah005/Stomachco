@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Stomachco.Models.CoffeeDrinks>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Drniks</h1>
+<div class="d-flex justify-content-between">
+    <p>
+        <a asp-action="Create" class="btn btn-danger m-2">Create New</a>
+        <a asp-action="AllCoffeeDrinks" class="btn btn-danger m-2">All Drinks</a>
+
+
+    </p>
+    <p>
+        <a asp-action="Deleted" class="btn btn-danger m-2">Deleted</a>
+
+        <a asp-action="Abroved" class="btn btn-danger m-2">Abroved</a>
+    </p>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DrinkName)
+            </th>
+          
+            <th>
+                @Html.DisplayNameFor(model => model.DrinkImg)
+            </th>
+          
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DrinkName)
+            </td>
+           
+            <td>
+                    <img width="100" height="100" src="@Url.Content(item.DrinkImg)" alt="Restaurant Photo" />
+                </td>
+           
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-danger">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-dark">Details</a> |
+                    <a asp-action="SoftDelete" asp-route-id="@item.ID" class="btn btn-warning">Soft Delete</a> |
+                    <a asp-action="UnPublished" asp-route-id="@item.ID" class="btn btn-outline-danger">UnPublished</a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

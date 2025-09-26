@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <title>الدفع</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+      
+        .payment-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 380px;
+            text-align: center;
+        }
+
+            .payment-card h2 {
+                margin-bottom: 1rem;
+                font-size: 1.4rem;
+                color: #333;
+            }
+
+        .option {
+            text-align: right;
+            margin-bottom: 1rem;
+        }
+
+        #card-element {
+            border: 1px solid #ddd;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            background: #fafafa;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.5rem;
+            background: #4f46e5;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s ease-in-out;
+            margin-top: 0.5rem;
+        }
+
+            button:hover {
+                background: #4338ca;
+            }
+
+        .status {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-card">
+        <h2>اختيار وسيلة الدفع</h2>
+
+        <div class="option">
+            <input type="radio" id="pay-card" name="method" value="card" checked>
+            <label for="pay-card">الدفع بالبطاقة</label>
+        </div>
+        <div class="option">
+            <input type="radio" id="pay-cash" name="method" value="cash">
+            <label for="pay-cash">الدفع كاش عند الاستلام</label>
+        </div>
+
+        <!-- بطاقة -->
+        <form id="card-form">
+            <div id="card-element"><!-- Stripe inject --></div>
+            <button id="card-btn">إتمام الدفع بالبطاقة</button>
+        </form>
+
+        <!-- كاش -->
+        <div id="cash-form" class="hidden">
+            <button id="cash-btn">تأكيد الطلب كاش</button>
+        </div>
+
+        <div class="status" id="status-msg"></div>
+    </div>
+
+    <script>
+        const stripe = Stripe("pk_test_1234567890"); // حط المفتاح العام تبعك
+        const elements = stripe.elements();
+        const cardElement = elements.create("card", { style: { base: { fontSize: "16px" } } });
+        cardElement.mount("#card-element");
+
+        const statusMsg = document.getElementById("status-msg");
+        const cardForm = document.getElementById("card-form");
+        const cashForm = document.getElementById("cash-form");
+
+        // تبديل بين البطاقة والكاش
+        document.querySelectorAll("input[name=method]").forEach(radio => {
+          radio.addEventListener("change", () => {
+            if (document.getElementById("pay-card").checked) {
+              cardForm.classList.remove("hidden");
+              cashForm.classList.add("hidden");
+            } else {
+              cardForm.classList.add("hidden");
+              cashForm.classList.remove("hidden");
+            }
+          });
+        });
+
+        // دفع بالبطاقة
+        cardForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          statusMsg.textContent = "جارٍ معالجة الدفع ...";
+
+          // اطلب PaymentIntent من الباك إند
+          const response = await fetch("/api/payment/create-payment-intent", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ amount: 2500, currency: "jod" })
+          });
+          const { clientSecret } = await response.json();
+
+          // تأكيد الدفع
+          const { paymentIntent, error } = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: { card: cardElement }
+          });
+
+          if (error) {
+            statusMsg.textContent = "❌ خطأ: " + error.message;
+          } else if (paymentIntent.status === "succeeded") {
+            statusMsg.textContent = "✅ تم الدفع بنجاح!";
+          }
+        });
+
+        // دفع كاش
+        document.getElementById("cash-btn").addEventListener("click", async () => {
+          statusMsg.textContent = "جارٍ تسجيل الطلب كاش ...";
+          const resp = await fetch("/api/payment/cash", {
+            method: "POST",
+            headers: { "Content-Type":"application/json" },
+            body: JSON.stringify({ orderId: 123, amount: 2500 })
+          });
+          const data = await resp.json();
+          statusMsg.textContent = data.success ? "✅ تم تسجيل الطلب كاش!" : "❌ فشل تسجيل الطلب";
+        });
+    </script>
+</body>
+</html>

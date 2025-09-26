@@ -1,0 +1,8 @@
+﻿@{
+    ViewData["Title"] = "Stomachco";
+}
+
+@await Html.PartialAsync("Landing")
+@await Component.InvokeAsync("Restaurants")
+@await Component.InvokeAsync("Coffee")
+@await Component.InvokeAsync("SuperMarket")

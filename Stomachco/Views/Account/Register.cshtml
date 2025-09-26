@@ -1,0 +1,62 @@
+﻿@model Stomachco.Models.ViewModel.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = null;
+}
+<link rel="stylesheet" href="~/css/Signin.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+
+<div class="signin">
+    <div class="content">
+        <div class="image">
+            <img src="~/images/Logo.png" alt="" />
+        </div>
+        <h1 style="margin: auto">Sign up to enjoy !</h1>
+        <form asp-action="Register">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="user">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+               
+            </div>
+            <div class="pass">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+               
+            </div>
+            <div class="pass">
+                <label asp-for="ConfirnPassword" class="control-label"></label>
+                <input asp-for="ConfirnPassword" id="passlabel" class="form-control" />
+                <i class="fas fa-eye toggle-password"
+                   onclick="togglePassword()"
+                   id="eyeIcon"></i>
+            </div>
+
+            <input class="submit" type="submit" value="Sign Up" />
+        </form>
+        <div class="login">
+            <h3 class="log">Already have an account ?</h3>
+            <a asp-action="Login"> Log in here .</a>
+        </div>
+    </div>
+</div>
+
+
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById("passlabel");
+            const eyeIcon = document.getElementById("eyeIcon");
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye");
+            }
+        }
+    </script>

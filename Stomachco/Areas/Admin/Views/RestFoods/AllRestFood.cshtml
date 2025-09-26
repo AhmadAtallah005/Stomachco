@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Stomachco.Models.RestFood>
+
+@{
+    ViewData["Title"] = "AllRestFood";
+}
+
+<h1>AllRestFood</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FoodName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FoodDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FoodImg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriceUnit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isPublished)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isDeleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodDescription)
+            </td>
+            <td>
+                    <img width="100" height="100" src="@Url.Content(item.FoodImg)" alt="Restaurant Photo" />
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceUnit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isPublished)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isDeleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+           
+        </tr>
+}
+    </tbody>
+</table>
